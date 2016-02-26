@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Bangers");
+
+body {
+	text-align: center;
+	font-family: 'Bangers', cursive;
+	font-size: 2.2em;
+}
+
+h2 {
+	color: #333;
+	font-size: 280%;
+	line-height: 0.1em;
+}
+
+h1 {
+	line-height: 0.1em;
+	font-size: 600%;
+}
+
+canvas {
+	 margin: 2em auto 0;
+}
+
+#game, #notice, #intro, #manager, #pattern-list, #gameplay {
+	display: none;
+}
+
+#manager button {
+	display: none;
+	background: transparent;
+	border: none;
+	height: 40em;
+	width: 40em;
+	margin: 0 auto 0;
+}
+
+#manager button img {
+	height: 100%;
+	width: 100%;
+}
+
+#startcode img {
+	margin: 0 auto;
+}
+
+.pattern {
+	float: left;
+	text-align: center;
+	width: 90pt;
+	height: 150pt;
+	cursor: pointer;
+}
+
+.pattern img {
+	width: 80pt;
+}
+
+.pattern p {
+	font-size: 22pt;
+	line-height: 20pt;
+	margin: 2pt;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Recognizer Game</title>
+<link rel="stylesheet" href="style/style.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="script/qrcode.min.js" type="text/javascript"></script>
+<script src="http://cdn.pubnub.com/pubnub-3.13.0.min.js"></script>
+<script src="script/application.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="intro">
+		<h2>Are you ready to play</h2>
+		<h1>Recognizer?</h1>
+		<p>
+		To start the game, scan the QR code with the game manager's device:
+		</p>
+		<div id="startcode"></div>
+	</div>
+	
+	<div id="notice">
+		<h2>Please Wait...</h2>
+	</div>
+	
+	<div id="manager">
+		<div id="pattern-list">
+		</div>
+		<div id="gameplay">
+			<p id="title"></p>
+			<button id="play-button"><img src="images/play.svg"></button>
+			<button id="pause-button"><img src="images/pause.svg"></button>
+			<button id="ff-button"><img src="images/fastforward.svg"></button>
+			<button id="reset-button"><img src="images/reset.svg"></button>
+		</div>
+	</div>
+
+	<div id="game">
+		<canvas id="pattern"></canvas>
+	</div>
+
+</body>
+</html>
