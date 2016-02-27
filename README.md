@@ -14,7 +14,7 @@ want to try playing on the hosted setup at [http://recognizer.geek.co.il](http:/
    it on a large screen TV, all the better. The game was not tested on "Smart TV"
    built-in browser, but it should work - please let me know about your experience.
 2. Use a smart phone with a bar code scanner, capture the QR code show on main
-   display, and start the URL shown in a browse. The display should immediately 
+   display, and start the URL shown in a browser. The display should immediately 
    switch to "Please Wait...". If this is not the case then you have networking
    problem.
 3. The phone display is now the manager for the game - choose a logo to play with
