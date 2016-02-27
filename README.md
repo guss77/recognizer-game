@@ -40,8 +40,8 @@ please contact me.
 ### Image files
 
 All the patterns are stored as 960x960 gray scale PNG formatted images under
-`WebContent/images` (though there are also images for the interface of the game -
-these are stored as SVG images.
+`WebContent/images` (though there are also images for the interface of the game
+stored there - these are stored as SVG images).
 
 To generate new image files, I found ImageMagick's `convert` and the following
 bash code useful:
