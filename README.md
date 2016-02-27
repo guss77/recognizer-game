@@ -65,13 +65,27 @@ instead of the default value of 90%), disable black & white threshold-base conve
 (by using "-1" as the second parameter) or choose a different conversion method. If
 you don't have `gwenview` installed, other viewers would probably work just as well :-)
 
+#### Notes on choosing good pattern images
+
+Try to avoid logos that are basically text, they make recognition really difficult
+until you can read text, and then immediately very easy.
+
+Its best to crop the image so that there is very little white space around the graphic,
+otherwise there is wasted space on the display and it just makes recognition unnecessarily
+difficult. Also remove any small markings that are irrelevant to the main graphic,
+such as "TM" and "(R)".
+
 I find it is useful to avoid color images (they tend to make the game very easy) and
 to prefer completely black and white (i.e. no grays) images, as gray pixels tend to
-confuse the viewers too much. 
+confuse the viewers too much. The script above uses thresholding to remove gray pixels
+(convert them to black or white depending on their brightness) and is tunable - play
+with different threshold values until you get something you like. This algorithm
+is also available from most graphics suites, so if you aren't running on Linux you
+can use Gimp or other tools.
 
 Some logos simply don't work work well in pure black & white, so you'd find some
-images do have some gray scales - at which point I try to minimize the dynamic range
-of the image. Gimp's "Color Levels" tool is very useful for that. Some logos simply
+images here to have some gray scales - at which point I try to minimize the dynamic range
+of the image. Gimp's "Color Levels" tool is very useful for that. Other logos simply
 do not work at all without color (for example, Nintendo 64) so I rather not add them
 to the game at all.
 
