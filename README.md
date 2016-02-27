@@ -83,8 +83,8 @@ with different threshold values until you get something you like. This algorithm
 is also available from most graphics suites, so if you aren't running on Linux you
 can use Gimp or other tools.
 
-Some logos simply don't work work well in pure black & white, so you'd find some
-images here to have some gray scales - at which point I try to minimize the dynamic range
+Some logos simply don't work well in pure black & white, so you'd find some images
+here to have some gray scales - at which point I try to minimize the dynamic range
 of the image. Gimp's "Color Levels" tool is very useful for that. Other logos simply
 do not work at all without color (for example, Nintendo 64) so I rather not add them
 to the game at all.
