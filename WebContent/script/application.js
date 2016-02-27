@@ -63,30 +63,14 @@ GameServer.prototype.errorHandler = function(location, error) {
  */
 GameServer.prototype.handleMessage = function(message) {
 	switch (message.action) {
-	case 'connect':
-		if (this.onconnect)
-			this.onconnect();
-		break;
 	case 'start':
 		if (this.onstart)
 			this.onstart(message.src);
 		break;
-	case 'pause':
-		if (this.onpause)
-			this.onpause();
-		break;
-	case 'resume':
-		if (this.onresume)
-			this.onresume();
-		break;
-	case 'reset':
-		if (this.onreset)
-			this.onreset();
-		break;
-	case 'skip':
-		if (this.onskip)
-			this.onskip();
-		break;
+	default:
+		var method = 'on' + message.action;
+		if (this[method])
+			this[method]();
 	}
 }
 
@@ -108,63 +92,51 @@ GameManager.prototype.errorHandler = function(location, error) {
 /**
  * Notify the display that we are connected
  */
-GameManager.prototype.connect = function() {
+GameManager.prototype.send = function(action, args) {
+	var message = { action: action };
+	if (args) for (var key in args) message[key] = args[key];
 	this.pubnub.publish({
 		channel: this.pubnubChannel,
-		message: { action: 'connect' },
-		callback : function(m){ console.log(m); }
+		message: message,
+		callback : function(m){ console.log('Sent',action,':',m); }
 	});
 };
+
+/**
+ * Notify the display that we are connected
+ */
+GameManager.prototype.connect = function() { this.send('connect'); };
+
+/**
+ * Send the ready signal that the manager is ready to start the animation
+ */
+GameManager.prototype.ready = function() { this.send('ready'); };
 
 /**
  * Start a pattern recognition
  * @param image path to image to animate on the display
  */
-GameManager.prototype.start = function(image) {
-	this.pubnub.publish({
-		channel: this.pubnubChannel,
-		message: { action: 'start', src: image },
-		callback : function(m){ console.log(m); }
-	});
-};
+GameManager.prototype.start = function(image) { this.send('start',{src:image}); };
 
 /**
  * Pause the pattern recognition
  */
-GameManager.prototype.pause = function() {
-	this.pubnub.publish({
-		channel: this.pubnubChannel,
-		message: { action: 'pause' },
-		callback : function(m){ console.log(m); }
-	});
-};
+GameManager.prototype.pause = function() { this.send('pause'); };
 
 /**
  * Resume the pattern recognition
  */
-GameManager.prototype.resume = function() {
-	this.pubnub.publish({
-		channel: this.pubnubChannel,
-		message: { action: 'resume' },
-		callback : function(m){ console.log(m); }
-	});
-};
+GameManager.prototype.resume = function() { this.send('resume'); };
 
-GameManager.prototype.reset = function() {
-	this.pubnub.publish({
-		channel: this.pubnubChannel,
-		message: { action: 'reset' },
-		callback : function(m){ console.log(m); }
-	});
-};
+/**
+ * Reset the game for the next pattern
+ */
+GameManager.prototype.reset = function() { this.send('reset'); };
 
-GameManager.prototype.skip = function() {
-	this.pubnub.publish({
-		channel: this.pubnubChannel,
-		message: { action: 'skip' },
-		callback : function(m){ console.log(m); }
-	});
-};
+/**
+ * Display the full image and stop the animation
+ */
+GameManager.prototype.skip = function() { this.send('skip'); };
 
 /**
  * Main control mechanis, including setting up screens
@@ -269,6 +241,7 @@ GameControl.prototype.startPlay = function(name) {
  * Present the game manager screen and hook up its controls
  */
 GameControl.prototype.showGameplay = function(name) {
+	this.conn.ready();
 	this.playing = false;
 	this.currentPattern = name;
 	$('#manager #title').html(name);
@@ -338,8 +311,9 @@ GameControl.prototype.showIntro = function(code) {
  * Start the game's display
  */
 GameControl.prototype.startGame = function() {
-	$('#intro').hide();
-	$('#game').show();
+	$('#intro').hide(function(){
+		$('#waiting').show();
+	});	
 	var canvas = $('#pattern')[0],
 		size = parseInt($( window ).height() * 0.85);
 	this.ctx = canvas.getContext("2d");
@@ -351,18 +325,31 @@ GameControl.prototype.startGame = function() {
 	this.ctx.webkitImageSmoothingEnabled = false;
 	this.ctx.imageSmoothingEnabled = false;
 	
+	this.conn.onready = function() {
+		$('#waiting').hide(function(){
+			$('#ready').show();
+		})
+	};
 	this.conn.onstart = this.startPattern.bind(this);
 	this.conn.onreset = this.resetGame.bind(this);
 	this.conn.onskip = this.skipToTheEnd.bind(this);
 };
 
 GameControl.prototype.startPattern = function(image) {
+	$('#intro').hide(0);
+	$('#waiting').hide(0);
+	$('#ready').hide(function(){
+		$('#game').show();
+	});
 	this.game = new Game(this.ctx, image);
 	this.conn.onpause = this.game.pause.bind(this.game); 
 	this.conn.onresume = this.game.start.bind(this.game);
 };
 
 GameControl.prototype.resetGame = function() {
+	$('#game').hide(function(){
+		$('#waiting').show();
+	});
 	if (this.game) {
 		this.game.reset();
 		this.game = null;

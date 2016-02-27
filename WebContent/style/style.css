@@ -5,24 +5,27 @@ body {
 	text-align: center;
 	font-family: 'Bangers', cursive;
 	font-size: 2.2em;
+	line-height: 0.9em;
+}
+
+h1 {
+	margin: 0.1em;
+	font-size: 600%;
+	line-height: 0.9em;
 }
 
 h2 {
 	color: #333;
 	font-size: 280%;
-	line-height: 0.1em;
-}
-
-h1 {
-	line-height: 0.1em;
-	font-size: 600%;
+	margin: 0.1em;
+	line-height: 0.9em;
 }
 
 canvas {
 	 margin: 2em auto 0;
 }
 
-#game, #notice, #intro, #manager, #pattern-list, #gameplay {
+#game, #waiting, #ready, #intro, #manager, #pattern-list, #gameplay {
 	display: none;
 }
 
@@ -57,7 +60,7 @@ canvas {
 }
 
 .pattern p {
-	font-size: 22pt;
-	line-height: 20pt;
 	margin: 2pt;
+	font-size: 22pt;
+	line-height: 0.9em;
 }
