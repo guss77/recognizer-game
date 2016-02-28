@@ -97,3 +97,12 @@ manager display will render the images in the order they are listed in the JSON 
 with the key being the text you want to display to the manager (try to keep it short -
 three words is usually too much) and the value is the name of the image file, without
 the `.png` extention or the path.
+
+## License
+
+All code, including all HTML, Javascript and CSS stylesheet files is copyrighted by
+[Oded Arbel](mailto:oded@geek.co.il) and licensed under the open source MIT license
+(see [LICENSE](./LICENSE) for details).
+
+Trademarks and logos in PNG files are copyrighted and owned by their respective owner
+and are used here without permission for educational purposes.
