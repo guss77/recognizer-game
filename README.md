@@ -2,7 +2,7 @@
 
 Base on the [Game of Geeks](http://www.gameofgeeks.tv/) TWiT.tv game show section,
 this game uses a desktop web browser and a mobile device web browser to allow you
-to challenge your friends to a game for "Recognizer".
+to challenge your friends to a game of "Recognizer".
 
 If you are reading this document, then its likely because you want to run your
 own instance, if so - look for the "Installation" section. Otherwise, you might
@@ -13,9 +13,9 @@ want to try playing on the hosted setup at [http://recognizer.geek.co.il](http:/
 1. Load the main display on a web browser that everyone can see - if you can project
    it on a large screen TV, all the better. The game was not tested on "Smart TV"
    built-in browser, but it should work - please let me know about your experience.
-2. Use a smart phone with a bar code scanner, capture the QR code show on main
-   display, and start the URL shown in a browser. The display should immediately 
-   switch to "Please Wait...". If this is not the case then you have networking
+2. Use a smart phone with a bar code scanner, capture the QR code shown on the main
+   display, then start the URL shown in a browser. The display should immediately 
+   switch to "Please Wait...". If this is not the case then you may have a networking
    problem.
 3. The phone display is now the manager for the game - choose a logo to play with
    or the dice icon to start a random recognizer pattern. The main display should
