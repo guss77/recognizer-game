@@ -104,5 +104,6 @@
 	"Java": "java",
 	"LogEntries": "logentries",
 	"Amazon Web Services": "aws",
-	"Node.js": "nodejs"
+	"Node.js": "nodejs",
+	"IntelliJ": "intellij"
 }
