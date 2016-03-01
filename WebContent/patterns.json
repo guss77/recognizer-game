@@ -101,5 +101,8 @@
 	"Halo": "halo",
 	"Umbrella Corporation": "umbrellacorp",
 	"Docker": "docker",
-	"Java": "java" 
+	"Java": "java",
+	"LogEntries": "logentries",
+	"Amazon Web Services": "aws",
+	"Node.js": "nodejs"
 }
